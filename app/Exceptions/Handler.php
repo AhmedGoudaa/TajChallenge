@@ -8,6 +8,8 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Tajawal\Exceptions\CustomValidationException;
+use Tajawal\Exceptions\DataSourceNotExistsException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,6 +47,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if($e instanceof CustomValidationException)
+            return response()->json($e->getErrorMessages(), 500);
+
+        if($e instanceof DataSourceNotExistsException)
+            return response()->json($e->getErrorMessages(), 500);
+
+
         return parent::render($request, $e);
     }
 }

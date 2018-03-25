@@ -12,6 +12,7 @@ namespace Tajawal\Infrastructure;
 use Tajawal\Base\AbstractHotelDataSource;
 use GuzzleHttp\Client;
 use Tajawal\Base\Collection;
+use Tajawal\Exceptions\DataSourceNotExistsException;
 
 
 class HotelDataSource extends AbstractHotelDataSource
@@ -53,11 +54,7 @@ class HotelDataSource extends AbstractHotelDataSource
 
         return function($response){
 
-            // TODO:: throw exception
-            return "[
-                'Message' => 'Error in request',
-                'hotels' => []
-                ]";
+            throw new DataSourceNotExistsException();
         };
 
     }
