@@ -17,14 +17,14 @@ interface Repository
     /**
      * @return DataSource
      */
-    public function getDataSource():DataSource;
+    public function getDataSource(): DataSource;
 
 
     /**
      * Get or list all element
      * @return Collection
      */
-    public function get():Collection;
+    public function get(): Collection;
 
 
     /*

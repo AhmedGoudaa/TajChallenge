@@ -10,7 +10,17 @@ class MapperTest extends TestCase
 {
 
 
-    private function getJson(){
+    public function testMappingObjectsCount()
+    {
+        $mapper = $this->app->make("Tajawal\Contracts\CollectionMapper");
+
+        $collection = $mapper->map($this->getJson());
+
+        $this->assertEquals(1, $collection->count());
+    }
+
+    private function getJson()
+    {
 
         return '{  "hotels": [ {
                                               "name": "Media One Hotel",
@@ -33,16 +43,6 @@ class MapperTest extends TestCase
                                             }
                                        ]
                               }';
-    }
-
-
-    public function testMappingObjectsCount()
-    {
-        $mapper = $this->app->make("Tajawal\Contracts\CollectionMapper");
-
-        $collection = $mapper->map($this->getJson());
-
-        $this->assertEquals(1 ,$collection->count());
     }
 
 

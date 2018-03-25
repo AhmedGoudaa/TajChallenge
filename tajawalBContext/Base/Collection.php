@@ -24,15 +24,6 @@ class Collection extends \Illuminate\Support\Collection
     }
 
     /**
-     * Search by
-     * @param Criteria $criteria
-     * @return static
-     */
-    public function searchByCriteria(Criteria $criteria){
-        return $this->filter($criteria->getCallableCriteria());
-    }
-
-    /**
      * Search by many criteria eg : search by name & search by price
      * @param array $criterias
      * @return Collection
@@ -47,8 +38,18 @@ class Collection extends \Illuminate\Support\Collection
         return $result;
     }
 
+    /**
+     * Search by
+     * @param Criteria $criteria
+     * @return static
+     */
+    public function searchByCriteria(Criteria $criteria)
+    {
+        return $this->filter($criteria->getCallableCriteria());
+    }
+
     public function orderByCriteria(OrderCriteria $orderCriteria)
     {
-        return $this->sortBy($orderCriteria->getCallableCriteria(), SORT_REGULAR , $orderCriteria->getOrderType());
+        return $this->sortBy($orderCriteria->getCallableCriteria(), SORT_REGULAR, $orderCriteria->getOrderType());
     }
 }

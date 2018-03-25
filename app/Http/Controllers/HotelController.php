@@ -13,7 +13,7 @@ class HotelController extends Controller
 
     public function __construct(Service $hotelService)
     {
-        $this->hotelService =$hotelService;
+        $this->hotelService = $hotelService;
     }
 
 
@@ -23,12 +23,13 @@ class HotelController extends Controller
         $collection = $this->hotelService->search($request->all());
 
 
-         $HotelsAsStr = $collection->map(function ($hotel){
+        $HotelsAsStr = $collection->map(function ($hotel) {
 
-             return $hotel->toArray();  });
+            return $hotel->toArray();
+        });
 
 
-        return response(json_encode(array_values ( $HotelsAsStr->toArray())));
+        return response(json_encode(array_values($HotelsAsStr->toArray())));
     }
 
 

@@ -131,14 +131,14 @@ class HotelServiceTest extends TestCase
     public function testMultiSearchWithOrderByPrice()
     {
         $searchResult = $this->hotelService->search([
-                                                    'priceFrom' => 100,
-                                                    'priceTo' => 300.5,
-                                                    'dateFrom' => '10-10-2020',
-                                                    'dateTo' => '12-10-2020',
-                                                    'orderBy' => 'price',
-                                                    'orderType' => 'desc'
-                                                ]
-                                            );
+                'priceFrom' => 100,
+                'priceTo' => 300.5,
+                'dateFrom' => '10-10-2020',
+                'dateTo' => '12-10-2020',
+                'orderBy' => 'price',
+                'orderType' => 'desc'
+            ]
+        );
         $array = array_values($searchResult->toArray());
 
         $this->assertEquals(300.5, $array[0]->price);

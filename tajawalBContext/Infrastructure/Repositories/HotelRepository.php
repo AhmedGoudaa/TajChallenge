@@ -34,5 +34,4 @@ class HotelRepository extends BaseRepository
     }
 
 
-
 }

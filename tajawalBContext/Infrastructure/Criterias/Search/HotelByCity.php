@@ -36,8 +36,8 @@ class HotelByCity extends SearchCriteria
     }
 
 
-    private function filterHotelByCity(Hotel $hotel):bool
+    private function filterHotelByCity(Hotel $hotel): bool
     {
-        return $hotel->city === $this->target ;
+        return $hotel->city === $this->target;
     }
 }

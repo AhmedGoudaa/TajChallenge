@@ -21,15 +21,15 @@ class HotelCriteriaCreator implements CriteriaCreator
      * @param array $searchFields
      * @return array
      */
-    public function getSearchCriteria(array $searchFields):array
+    public function getSearchCriteria(array $searchFields): array
     {
         $criteria = [];
 
 
-        $searchFields = $this->groupRanges($searchFields,'price');
-        $searchFields = $this->groupRanges($searchFields,'date');
+        $searchFields = $this->groupRanges($searchFields, 'price');
+        $searchFields = $this->groupRanges($searchFields, 'date');
 
-        foreach ($searchFields as $key => $val){
+        foreach ($searchFields as $key => $val) {
 
             $searchCriteria = $this->matchSearchKey($key, $val);
 
@@ -49,12 +49,12 @@ class HotelCriteriaCreator implements CriteriaCreator
      * @param string $key
      * @return array
      */
-    private function groupRanges(array $searchFields, string $key):array
+    private function groupRanges(array $searchFields, string $key): array
     {
 
-        if (isset($searchFields[$key.'From']) && isset($searchFields[$key.'To'])){
-            $searchFields[$key] = ['from'=>$searchFields[$key.'From'] , 'to'=>$searchFields[$key.'To']];
-            unset($searchFields[$key.'From'],$searchFields[$key.'To']);
+        if (isset($searchFields[$key . 'From']) && isset($searchFields[$key . 'To'])) {
+            $searchFields[$key] = ['from' => $searchFields[$key . 'From'], 'to' => $searchFields[$key . 'To']];
+            unset($searchFields[$key . 'From'], $searchFields[$key . 'To']);
         }
 
 
@@ -68,15 +68,26 @@ class HotelCriteriaCreator implements CriteriaCreator
      * @param $val
      * @return SearchCriteria
      */
-    private function matchSearchKey(string $key , $val){
+    private function matchSearchKey(string $key, $val)
+    {
 
-        switch ($key){
+        switch ($key) {
 
-            case 'name' : return new HotelByName($val);
-            case 'price': return new HotelByPrice($val);
-            case 'city': return new HotelByCity($val);
-            case 'date': return new HotelByDate($val);
-            default : return null;
+            case 'name' :
+                return new HotelByName($val);
+                break;
+            case 'price':
+                return new HotelByPrice($val);
+                break;
+            case 'city':
+                return new HotelByCity($val);
+                break;
+            case 'date':
+                return new HotelByDate($val);
+                break;
+            default :
+                return null;
+                break;
 
         }
     }
@@ -90,24 +101,24 @@ class HotelCriteriaCreator implements CriteriaCreator
      */
     public function getOrderCriteria(array $fields)
     {
-        $orderCriteria= null;
+        $orderCriteria = null;
 
         // check for orderBy  [name , price ]
-        if (isset($fields['orderBy'])){
+        if (isset($fields['orderBy'])) {
 
             $orderCriteria = $this->createOrderingCriteria($fields);
 
             //Check for order type [asc, desc] default is asc
-            if (isset($fields['orderType'])){
+            if (isset($fields['orderType'])) {
 
-                if ($fields['orderType'] == 'desc'){
+                if ($fields['orderType'] == 'desc') {
                     // set orderType = true for descending order
-                    $orderCriteria->setOrderType( true);
+                    $orderCriteria->setOrderType(true);
                 }
             }
         }
 
-            return $orderCriteria;
+        return $orderCriteria;
     }
 
     /**
@@ -120,9 +131,11 @@ class HotelCriteriaCreator implements CriteriaCreator
         switch ($fields['orderBy']) {
             case 'price' :
                 return new OrderByPrice();
+                break;
 
             default      :
                 return new OrderByName();
+                break;
         }
     }
 

@@ -40,9 +40,9 @@ class HotelByName extends SearchCriteria
      * @param Hotel $hotel
      * @return bool
      */
-    private function filterHotelByName(Hotel $hotel):bool
+    private function filterHotelByName(Hotel $hotel): bool
     {
-        if (strpos($hotel->name , $this->target) !== false)
+        if (strpos($hotel->name, $this->target) !== false)
             return true;
 
         return false;

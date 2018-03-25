@@ -17,7 +17,7 @@ class Hotel implements Model
     /**
      * @var string
      */
-    public  $name;
+    public $name;
 
     /**
      * @var float
@@ -41,7 +41,7 @@ class Hotel implements Model
      * @param $city
      * @param $availability
      */
-    public function __construct( string $name , float $price, string $city, array $availability = [])
+    public function __construct(string $name, float $price, string $city, array $availability = [])
     {
         $this->name = $name;
         $this->price = $price;
@@ -50,10 +50,9 @@ class Hotel implements Model
     }
 
 
-
-    public function toArray():array
+    public function toArray(): array
     {
-        return json_decode(json_encode($this),TRUE);
+        return json_decode(json_encode($this), TRUE);
     }
 
 

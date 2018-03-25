@@ -9,8 +9,8 @@
 namespace Tajawal\Infrastructure;
 
 
-use Tajawal\Base\AbstractHotelDataSource;
 use GuzzleHttp\Client;
+use Tajawal\Base\AbstractHotelDataSource;
 use Tajawal\Base\Collection;
 use Tajawal\Exceptions\DataSourceNotExistsException;
 
@@ -27,21 +27,27 @@ class HotelDataSource extends AbstractHotelDataSource
     {
 
         $response = (new Client())
-                            ->requestAsync('GET', $this->getURL())
-                            ->then($this->onSuccess(),$this->onError())
-                            ->wait();
+            ->requestAsync('GET', $this->getURL())
+            ->then($this->onSuccess(), $this->onError())
+            ->wait();
 
         return $this->mapper->map($response);
 
+    }
+
+    private function getURL(): string
+    {
+        return config('dataSource.hotelsURL');
     }
 
     /**
      * onSuccess callback
      * @return callable
      */
-    private function onSuccess():callable {
+    private function onSuccess(): callable
+    {
 
-        return function($response){
+        return function ($response) {
             return $response->getBody()->getContents();
         };
     }
@@ -50,21 +56,15 @@ class HotelDataSource extends AbstractHotelDataSource
      * onError callback
      * @return callable
      */
-    private function onError():callable {
+    private function onError(): callable
+    {
 
-        return function($response){
+        return function ($response) {
 
             throw new DataSourceNotExistsException();
         };
 
     }
-
-    private function getURL() : string {
-        return config('dataSource.hotelsURL');
-    }
-
-
-
 
 
 }

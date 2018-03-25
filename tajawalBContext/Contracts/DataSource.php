@@ -13,5 +13,5 @@ use Tajawal\Base\Collection;
 
 interface DataSource
 {
-    public function get():Collection;
+    public function get(): Collection;
 }

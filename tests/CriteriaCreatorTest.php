@@ -12,20 +12,6 @@ class CriteriaCreatorTest extends TestCase
         $this->criteriaCreator = $this->app->make("Tajawal\Contracts\CriteriaCreator");
     }
 
-    private function getMockedRequestQueryData():array {
-
-        return [
-            'name'=>'test',
-            'priceFrom'=>10,
-            'priceTo'=>20,
-            'dateFrom'=>'10-10-2020',
-            'dateTo'=>'20-10-2020',
-            'orderBy' => 'name',
-            'orderType'=>'desc'
-        ];
-    }
-
-
     /**
      * Test number of search criteria is 3 for [name , date => [from,to] , price => [from , to]]
      */
@@ -34,10 +20,23 @@ class CriteriaCreatorTest extends TestCase
 
         $searchCriteria = $this->criteriaCreator->getSearchCriteria($this->getMockedRequestQueryData());
 
-        $this->assertEquals(3,count($searchCriteria));
+        $this->assertEquals(3, count($searchCriteria));
 
     }
 
+    private function getMockedRequestQueryData(): array
+    {
+
+        return [
+            'name' => 'test',
+            'priceFrom' => 10,
+            'priceTo' => 20,
+            'dateFrom' => '10-10-2020',
+            'dateTo' => '20-10-2020',
+            'orderBy' => 'name',
+            'orderType' => 'desc'
+        ];
+    }
 
     /**
      * Test that there is an order criteria for order by name

@@ -11,10 +11,11 @@ class CustomValidationException extends \Exception
      * form laravel validator
      * @var array
      */
-    private  $errors;
+    private $errors;
 
 
-    public function __construct($errors){
+    public function __construct($errors)
+    {
         $this->errors = $errors;
     }
 
@@ -28,7 +29,8 @@ class CustomValidationException extends \Exception
     /*
      * Getter for error messages
      */
-    public function getErrorMessages(){
-        return ['errors'=>$this->errors];
+    public function getErrorMessages()
+    {
+        return ['errors' => $this->errors];
     }
 }

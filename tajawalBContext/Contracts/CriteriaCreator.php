@@ -14,7 +14,7 @@ interface CriteriaCreator
      * @param array $fields
      * @return array of Criteria
      */
-    public function getSearchCriteria(array $fields):array;
+    public function getSearchCriteria(array $fields): array;
 
     /**
      * Get order criteria based on user inputs like order by name and in descending order

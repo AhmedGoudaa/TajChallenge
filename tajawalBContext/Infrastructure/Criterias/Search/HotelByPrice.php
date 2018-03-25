@@ -32,9 +32,9 @@ class HotelByPrice extends SearchCriteria
     }
 
 
-    private function filterHotelByPrice(Hotel $hotel):bool
+    private function filterHotelByPrice(Hotel $hotel): bool
     {
-        return ($hotel->price >= $this->target['from'] && $hotel->price <= $this->target['to']  )  ;
+        return ($hotel->price >= $this->target['from'] && $hotel->price <= $this->target['to']);
     }
 
 }

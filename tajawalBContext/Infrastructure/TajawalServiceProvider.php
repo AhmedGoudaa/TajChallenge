@@ -18,7 +18,9 @@ class TajawalServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(){ }
+    public function boot()
+    {
+    }
 
     /**
      * Register bindings in the container.
@@ -29,14 +31,13 @@ class TajawalServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Tajawal\Contracts\CollectionMapper', 'Tajawal\Infrastructure\HotelCollectionMapper');
         $this->app->singleton('Tajawal\Base\AbstractHotelDataSource', 'Tajawal\Infrastructure\HotelDataSource');
-        $this->app->singleton('Tajawal\Base\BaseRepository','Tajawal\Infrastructure\Repositories\HotelRepository');
+        $this->app->singleton('Tajawal\Base\BaseRepository', 'Tajawal\Infrastructure\Repositories\HotelRepository');
         $this->app->singleton('Tajawal\Contracts\CriteriaCreator', 'Tajawal\Domain\Services\HotelCriteriaCreator');
         $this->app->singleton('Tajawal\Contracts\Validator', 'Tajawal\Infrastructure\ValidatorService');
         $this->app->singleton('Tajawal\Base\AbstractSearchRules', 'Tajawal\Infrastructure\Rules\Search');
         $this->app->when('App\Http\Controllers\HotelController')
-                  ->needs('Tajawal\Contracts\Service')
-                  ->give('Tajawal\Domain\Services\HotelService');
-
+            ->needs('Tajawal\Contracts\Service')
+            ->give('Tajawal\Domain\Services\HotelService');
 
 
     }

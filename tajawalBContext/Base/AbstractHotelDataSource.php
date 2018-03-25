@@ -9,8 +9,8 @@
 namespace Tajawal\Base;
 
 
-use Tajawal\Contracts\DataSource;
 use Tajawal\Contracts\CollectionMapper;
+use Tajawal\Contracts\DataSource;
 
 abstract class AbstractHotelDataSource implements DataSource
 {
@@ -23,7 +23,7 @@ abstract class AbstractHotelDataSource implements DataSource
      */
     public function __construct(CollectionMapper $mapper)
     {
-            $this->mapper = $mapper;
+        $this->mapper = $mapper;
     }
 
     abstract public function get(): Collection;

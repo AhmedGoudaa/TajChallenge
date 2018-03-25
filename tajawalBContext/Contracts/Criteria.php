@@ -5,5 +5,5 @@ namespace Tajawal\Contracts;
 
 interface Criteria
 {
-    public function getCallableCriteria():callable ;
+    public function getCallableCriteria(): callable;
 }

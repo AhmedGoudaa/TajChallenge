@@ -11,7 +11,7 @@ namespace Tajawal\Contracts;
 
 interface Rules
 {
-    public function getRulesArray():array;
+    public function getRulesArray(): array;
 
 
 }

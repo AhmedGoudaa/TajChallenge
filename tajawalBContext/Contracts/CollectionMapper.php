@@ -12,6 +12,6 @@ use Tajawal\Base\Collection;
 
 interface CollectionMapper
 {
-    public function map(string $items):Collection;
+    public function map(string $items): Collection;
 
 }

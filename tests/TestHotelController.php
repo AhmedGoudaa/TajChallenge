@@ -56,11 +56,11 @@ class TestHotelController extends \TestCase
     {
 
         $response = $this->json('GET', '/search', [
-                                                            'city' => 'cairo',
-                                                            'priceFrom' => 100,
-                                                            'priceTo' => 3000.5,
-                                                            'dateFrom' => '10-10-2020',
-                                                            'dateTo' => '12-10-2020']
+                'city' => 'cairo',
+                'priceFrom' => 100,
+                'priceTo' => 3000.5,
+                'dateFrom' => '10-10-2020',
+                'dateTo' => '12-10-2020']
         );
 
         $response
@@ -77,21 +77,21 @@ class TestHotelController extends \TestCase
     {
 
         $response = $this->json('GET', '/search', [
-                'city'      => 'cairo222',
+                'city' => 'cairo222',
                 'priceFrom' => 100,
-                'priceTo'   => 3000.5,
-                'dateFrom'  => '10-10-202022',
-                'dateTo'    => '12-10-2020']
+                'priceTo' => 3000.5,
+                'dateFrom' => '10-10-202022',
+                'dateTo' => '12-10-2020']
         );
 
         $response
             ->seeJsonContains([
-                'city'     => [ 'The city may only contain letters.'],
-                'dateFrom' => [ 'The date from does not match the format d-m-Y.',
-                                'The date from is not a valid date.',
-                                'The date from must be a date before date to.'
-                              ],
-                "dateTo"   => [ 'The date to must be a date after date from.']
+                'city' => ['The city may only contain letters.'],
+                'dateFrom' => ['The date from does not match the format d-m-Y.',
+                    'The date from is not a valid date.',
+                    'The date from must be a date before date to.'
+                ],
+                "dateTo" => ['The date to must be a date after date from.']
 
             ]);
 

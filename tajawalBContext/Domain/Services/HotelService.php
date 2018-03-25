@@ -31,9 +31,9 @@ class HotelService implements Service
      * @param $requestDataValidator
      * @param $searchRules
      */
-    public function __construct(BaseRepository $hotelRepo ,
+    public function __construct(BaseRepository $hotelRepo,
                                 CriteriaCreator $criteriaCreator,
-                                Validator $requestDataValidator , AbstractSearchRules $searchRules)
+                                Validator $requestDataValidator, AbstractSearchRules $searchRules)
     {
         $this->hotelRepo = $hotelRepo;
         $this->criteriaCreator = $criteriaCreator;
@@ -46,9 +46,9 @@ class HotelService implements Service
     {
         $collection = $this->hotelRepo->get();
 
-        $this->requestDataValidator->validate($requestFields , $this->searchRules);
+        $this->requestDataValidator->validate($requestFields, $this->searchRules);
 
-        if (!empty($requestFields)){
+        if (!empty($requestFields)) {
 
             $searchCriteria = $this->criteriaCreator->getSearchCriteria($requestFields);
             $orderCriteria = $this->criteriaCreator->getOrderCriteria($requestFields);
@@ -56,7 +56,7 @@ class HotelService implements Service
             if (!empty($searchCriteria))
                 $collection = $collection->searchByManyCriteria($searchCriteria);
 
-            if ($orderCriteria != null )
+            if ($orderCriteria != null)
                 $collection = $collection->orderByCriteria($orderCriteria);
 
         }

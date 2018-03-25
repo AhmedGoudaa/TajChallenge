@@ -2,7 +2,6 @@
 
 namespace Tajawal\Base;
 
-
 use Tajawal\Contracts\Criteria;
 use Tajawal\Domain\Models\Hotel;
 
@@ -22,7 +21,7 @@ abstract class OrderCriteria implements Criteria
      */
     public function getCallableCriteria(): callable
     {
-        return array($this,'byField');
+        return array($this, 'byField');
     }
 
     /**
@@ -47,9 +46,7 @@ abstract class OrderCriteria implements Criteria
      * @param $key
      * @return mixed
      */
-    public  abstract function byField(Hotel $hotel, $key);
-
-
+    public abstract function byField(Hotel $hotel, $key);
 
 
 }

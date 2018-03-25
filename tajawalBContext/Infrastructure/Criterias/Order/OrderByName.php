@@ -21,7 +21,7 @@ class OrderByName extends OrderCriteria
      * @param $key
      * @return int
      */
-    public function byField(Hotel $hotel,$key)
+    public function byField(Hotel $hotel, $key)
     {
         return $hotel->name;
     }

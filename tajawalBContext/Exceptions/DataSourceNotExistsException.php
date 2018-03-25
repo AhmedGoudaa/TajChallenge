@@ -6,18 +6,20 @@ namespace Tajawal\Exceptions;
 class DataSourceNotExistsException extends \Exception
 {
 
-    public function getErrors()
+    public function getErrorMessages()
     {
-        return [
-                'Message' => 'Error while requesting data from The Data source'
-            ];
-
+        return ['errors' => $this->getErrors()];
     }
 
     /*
      * Getter for error messages
      */
-    public function getErrorMessages(){
-        return ['errors'=>$this->getErrors()];
+
+    public function getErrors()
+    {
+        return [
+            'Message' => 'Error while requesting data from The Data source'
+        ];
+
     }
 }

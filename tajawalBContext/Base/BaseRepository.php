@@ -15,12 +15,12 @@ use Tajawal\Contracts\Repository;
 abstract class BaseRepository implements Repository
 {
 
-    public abstract function getDataSource(): DataSource;
-
-    public function get():Collection
+    public function get(): Collection
     {
         return $this->getDataSource()->get();
     }
+
+    public abstract function getDataSource(): DataSource;
 
 
 }

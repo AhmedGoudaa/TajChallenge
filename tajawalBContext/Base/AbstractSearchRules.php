@@ -7,5 +7,5 @@ use Tajawal\Contracts\Rules;
 
 abstract class AbstractSearchRules implements Rules
 {
-    public abstract function getRulesArray():array;
+    public abstract function getRulesArray(): array;
 }

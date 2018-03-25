@@ -26,7 +26,7 @@ class HotelCollectionMapper implements CollectionMapper
     public function map(string $items): Collection
     {
 
-        $hotelJson = json_decode($items,true);
+        $hotelJson = json_decode($items, true);
 
         return $this->fromJsonArray($hotelJson['hotels']);
     }
@@ -37,24 +37,25 @@ class HotelCollectionMapper implements CollectionMapper
      * @param array $jsonArray
      * @return Collection
      */
-    private function fromJsonArray(array $jsonArray) : Collection {
+    private function fromJsonArray(array $jsonArray): Collection
+    {
 
         $hotels = [];
 
-        foreach ($jsonArray as $json){
+        foreach ($jsonArray as $json) {
 
-            $name                = $json["name"];
-            $price               = $json["price"];
-            $city                = $json["city"];
+            $name = $json["name"];
+            $price = $json["price"];
+            $city = $json["city"];
             $availabilityJsonArr = $json["availability"];
 
             $availabilityArr = [];
 
-            foreach ($availabilityJsonArr as $avail){
-                $availabilityArr [] = new Availability($avail["from"],$avail["to"]);
+            foreach ($availabilityJsonArr as $avail) {
+                $availabilityArr [] = new Availability($avail["from"], $avail["to"]);
             }
 
-            $hotels[] = new Hotel($name,(float)$price,$city,$availabilityArr );
+            $hotels[] = new Hotel($name, (float)$price, $city, $availabilityArr);
 
         }
 

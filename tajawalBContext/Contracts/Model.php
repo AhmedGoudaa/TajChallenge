@@ -8,7 +8,8 @@
 
 namespace Tajawal\Contracts;
 
-interface Model{
+interface Model
+{
 
-    public function toArray():array ;
+    public function toArray(): array;
 }

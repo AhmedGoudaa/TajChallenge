@@ -42,14 +42,14 @@ class HotelByDate extends SearchCriteria
      * @param Hotel $hotel
      * @return bool
      */
-    private function filterHotelByDate(Hotel $hotel):bool
+    private function filterHotelByDate(Hotel $hotel): bool
     {
-        foreach ($hotel->availability as $range){
+        foreach ($hotel->availability as $range) {
 
             $from = strtotime($this->target['from']);
             $to = strtotime($this->target['to']);
 
-            if (strtotime($range->from) <= $from && strtotime($range->to) >= $to )
+            if (strtotime($range->from) <= $from && strtotime($range->to) >= $to)
                 return true;
 
         }

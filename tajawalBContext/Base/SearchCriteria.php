@@ -14,8 +14,8 @@ abstract class SearchCriteria implements Criteria
      */
     public function getCallableCriteria(): callable
     {
-        return array($this,'filter');
+        return array($this, 'filter');
     }
 
-    public  abstract function filter($object):bool;
+    public abstract function filter($object): bool;
 }
