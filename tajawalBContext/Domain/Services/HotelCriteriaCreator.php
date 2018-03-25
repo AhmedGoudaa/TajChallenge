@@ -95,16 +95,7 @@ class HotelCriteriaCreator implements CriteriaCreator
         // check for orderBy  [name , price ]
         if (isset($fields['orderBy'])){
 
-            switch ($fields['orderBy']){
-                case 'price' : {
-                    $orderCriteria = new OrderByPrice();
-                    break;
-                }
-                default      : {
-                    $orderCriteria = new OrderByName();
-                    break;
-                }
-            }
+            $orderCriteria = $this->createOrderingCriteria($fields);
 
             //Check for order type [asc, desc] default is asc
             if (isset($fields['orderType'])){
@@ -117,6 +108,22 @@ class HotelCriteriaCreator implements CriteriaCreator
         }
 
             return $orderCriteria;
+    }
+
+    /**
+     * Create ordering Criteria
+     * @param array $fields
+     * @return OrderByName|OrderByPrice
+     */
+    private function createOrderingCriteria(array $fields)
+    {
+        switch ($fields['orderBy']) {
+            case 'price' :
+                return new OrderByPrice();
+
+            default      :
+                return new OrderByName();
+        }
     }
 
 }
